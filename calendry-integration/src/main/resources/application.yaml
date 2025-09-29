@@ -1,0 +1,48 @@
+calendly:
+  api:
+    base-url: https://api.calendly.com
+    token: ${CALENDLY_API_TOKEN}
+
+# Configurações do Servidor para Desenvolvimento
+server:
+  # Usar uma porta diferente para não conflitar com outros serviços
+  port: 8081
+  servlet:
+    context-path: /api/v1
+
+spring:
+  datasource:
+    # URL do banco H2 em memória
+    url: jdbc:h2:mem:penelope_test_db
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      # Habilita o console do H2 para acessar o banco pelo navegador
+      enabled: true
+  jpa:
+    # Mostra o SQL gerado pelo Hibernate no console
+    show-sql: true
+    properties:
+      hibernate:
+        # Formata o SQL para melhor legibilidade
+        format_sql: true
+    hibernate:
+      # Cria e destrói o esquema do banco a cada inicialização (útil para testes)
+      ddl-auto: create-drop
+
+# Habilita o Swagger UI
+springdoc:
+  swagger-ui:
+    enabled: true
+    # Altera o caminho para a documentação, se desejar (opcional)
+    path: swagger-ui/index.html
+    # Configurações de exibição do Swagger UI
+    docExpansion: none
+    operationsSorter: method
+
+  # Define o título da sua API (opcional, mas recomendado)
+  api-docs:
+    enabled: true
+    path: /api-docs
